@@ -10,7 +10,12 @@ export default function MainPage() {
   return (
     <main className={`${inter.className} ${styles.main}`}>
       <SearchBar />
-      <NewsCard />
+      <div className={styles.gridContainer}>
+        <NewsCard />
+        <NewsCard />
+        <NewsCard />
+        <NewsCard />
+      </div>
     </main>
   );
 }

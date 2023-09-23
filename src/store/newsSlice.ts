@@ -5,6 +5,10 @@ const initialState: { news: Partial<AllNewsDataType> } = {
   news: {},
 };
 
+type FetchOptionsType = {
+  keyWord: string;
+};
+
 export const newsSlice = createSlice({
   name: "newsData",
   initialState,
@@ -16,16 +20,20 @@ export const newsSlice = createSlice({
   },
 });
 
-const fetchNewsData = createAsyncThunk("newsData/fetchNewsData", async () => {
-  const URL = process.env.NEXT_PUBLIC_API_ENDPOINT!;
-  const searchParams = new URLSearchParams({
-    "api-key": process.env.NEXT_PUBLIC_API_KEY!,
-    "show-fields": "thumbnail",
-  });
+const fetchNewsData = createAsyncThunk(
+  "newsData/fetchNewsData",
+  async ({ keyWord }: Partial<FetchOptionsType>) => {
+    const URL = process.env.NEXT_PUBLIC_API_ENDPOINT!;
+    const searchParams = new URLSearchParams({
+      "api-key": process.env.NEXT_PUBLIC_API_KEY!,
+      "show-fields": "thumbnail",
+      q: keyWord || "",
+    });
 
-  const response = await fetch(URL + searchParams);
-  return await response.json();
-});
+    const response = await fetch(URL + searchParams);
+    return await response.json();
+  }
+);
 
 export const {} = newsSlice.actions;
 export { fetchNewsData };

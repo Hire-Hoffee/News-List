@@ -16,7 +16,7 @@ export default function MainPage() {
   const newsData = useAppSelector((state) => state.newsData.news);
 
   useEffect(() => {
-    dispatch(fetchNewsData());
+    dispatch(fetchNewsData({}));
   }, []);
 
   return (

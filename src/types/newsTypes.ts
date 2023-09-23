@@ -8,7 +8,7 @@ type AllNewsDataType = {
     currentPage: number;
     pages: number;
     orderBy: string;
-    results: OneNewsDataType;
+    results: OneNewsDataType[];
   };
 };
 
@@ -25,3 +25,5 @@ type OneNewsDataType = {
   pillarId: string;
   pillarName: string;
 };
+
+export type { AllNewsDataType };

@@ -1,0 +1,34 @@
+.mainContainer {
+  background-color: #748796;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.searchInputDiv,
+.searchOptionsDiv {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.searchInputDiv input {
+  border-radius: 5px;
+  margin-right: 20px;
+  border: none;
+  width: 100%;
+  padding: 10px 20px 10px 20px;
+}
+
+.searchInputDiv button {
+  border-radius: 5px;
+  padding: 10px 30px 10px 30px;
+  border: none;
+}
+
+.searchOptionsDiv select {
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}

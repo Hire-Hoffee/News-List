@@ -20,6 +20,7 @@ const fetchNewsData = createAsyncThunk("newsData/fetchNewsData", async () => {
   const URL = process.env.NEXT_PUBLIC_API_ENDPOINT!;
   const searchParams = new URLSearchParams({
     "api-key": process.env.NEXT_PUBLIC_API_KEY!,
+    "show-fields": "thumbnail",
   });
 
   const response = await fetch(URL + searchParams);

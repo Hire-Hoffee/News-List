@@ -24,7 +24,14 @@ export default function MainPage() {
       <SearchBar />
       <div className={styles.gridContainer}>
         {newsData.response?.results.map((item) => {
-          return <NewsCard key={item.id} />;
+          return (
+            <NewsCard
+              fields={item.fields}
+              webTitle={item.webTitle}
+              webPublicationDate={item.webPublicationDate}
+              key={item.id}
+            />
+          );
         })}
       </div>
     </main>

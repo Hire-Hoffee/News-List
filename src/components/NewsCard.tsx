@@ -1,16 +1,19 @@
 import styles from "@/styles/NewsCard.module.css";
+import { OneNewsDataType } from "@/types/newsTypes";
 
-type Props = {};
-
-export default function NewsCard({}: Props) {
+export default function NewsCard({
+  fields,
+  webTitle,
+  webPublicationDate,
+}: Partial<OneNewsDataType>) {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.imageContainer}>
-        <img src="https://placehold.jp/3d4070/ffffff/250x250.png" alt="" />
+        <img src={fields?.thumbnail} alt="" />
       </div>
       <div className={styles.detailsContainer}>
-        <span>Lorem, ipsum dolor.</span>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <span>{new Date(webPublicationDate!).toLocaleString()}</span>
+        <p>{webTitle}</p>
         <button>Details</button>
       </div>
     </div>

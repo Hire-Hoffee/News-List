@@ -21,9 +21,12 @@ type OneNewsDataType = {
   webTitle: string;
   webUrl: string;
   apiUrl: string;
+  fields: {
+    thumbnail: string;
+  };
   isHosted: boolean;
   pillarId: string;
   pillarName: string;
 };
 
-export type { AllNewsDataType };
+export type { AllNewsDataType, OneNewsDataType };

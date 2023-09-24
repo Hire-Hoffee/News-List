@@ -22,6 +22,10 @@ type OneNewsDataType = {
   webUrl: string;
   apiUrl: string;
   fields: {
+    headline: string;
+    main: string;
+    body: string;
+    wordcount: string;
     thumbnail: string;
   };
   isHosted: boolean;

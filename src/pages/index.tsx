@@ -44,6 +44,7 @@ export default function MainPage() {
               fields={item?.fields}
               webTitle={item?.webTitle}
               webPublicationDate={item?.webPublicationDate}
+              id={item?.id}
               key={item?.id}
             />
           );

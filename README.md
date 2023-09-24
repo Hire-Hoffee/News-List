@@ -1,40 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Приложение для чтения новостей
 
-## Getting Started
+### Техническое задание
 
-First, run the development server:
+Необходимо реализовать 2-х страничное новостное SPA приложение, в качестве бэкенда
+использовать Guardian API (для получения API ключа требуется регистрация).
+Приложение состоит из главной страницы, отображающей карточки новостей, при клике на
+какую-либо карточку должна открываться соответствующая страница новости.
+В качестве технического стека использовать: Next.js, Typescript, Redux Toolkit, CSS Modules.
+Дополнительно можно использовать любые JS библиотеки, которые помогут решить
+поставленную задачу.
+Требования к верстке: адаптивная (до 320px), кроссбраузерная
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Главная страница:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Необходимо реализовать функционал поиска новостей по ключевому слову
+- Реализовать сортировку результатов поисковой выдачи по релевантности и по дате
+  новости
+- Реализовать настройку количества отображаемых новостей на 1 странице
+- При скролле к последней новости на странице реализовать подгрузку новостей со
+  следующей страницы
+- Весь стейт на этой страницы должен храниться в redux, данные с бэкенда
+  запрашивать через redux async thunk
+- Использовать соответствующий эндпойнт для поиска новостей - ссылка на
+  документацию
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Пример реализации главной страницы:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+<div>
+  <img src="https://i.imgur.com/9D7moGb.png"/>
+</div>
+<br>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Страница новости:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Данная страница должна отображать текст новости
+- Параграфы, заголовки, списки, имеющиеся в тексте новости, должны иметь
+  соответствующие стили для правильного отображения их на странице (отступы
+  между элементами, жирное начертание шрифта для заголовков, реализовать стили
+  для цитат, картинок и других элементов, встречающихся в тексте новости)
+- Также данная страница должна содержать дату новости, картинку иллюстрирующую
+  эту новость (получить с бэкенда), ссылку на оригинальную статью на сайте Guardian,
+  кнопку для перехода назад на главную страницу
+- Данные на этой странице необходимо запрашивать на стороне сервера, для
+  страницы должен быть реализован Server Side Rendering
+- Использовать соответствующий эндпойнт для запроса данных о новости - ссылка на
+  документацию
 
-## Learn More
+Пример реализации страницы новости:
 
-To learn more about Next.js, take a look at the following resources:
+<div>
+  <img src="https://i.imgur.com/qWnsprR.png"/>
+</div>
+<br>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+В качестве результата работы необходимо прислать ссылку на публичный репозиторий на
+Github, содержащий исходный код приложения, историю коммитов. Для разработки
+приложения ответвиться от ветки main на ветку dev, по окончанию разработки сделать
+merge ветки dev в ветку main.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Запуск
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- git clone `https://github.com/Hire-Hoffee/News-List.git`
+- npm install
+- Создать `.env.local` файл со следующими параметрами
+  1.  `NEXT_PUBLIC_API_ENDPOINT` = `https://content.guardianapis.com/search?`
+  2.  `NEXT_PUBLIC_API_KEY` = `при регистрации на guardianapis`
+- npm run dev

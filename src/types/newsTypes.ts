@@ -27,6 +27,9 @@ type OneNewsDataType = {
     body: string;
     wordcount: string;
     thumbnail: string;
+    firstPublicationDate: string;
+    lastModified: string;
+    shortUrl: string;
   };
   isHosted: boolean;
   pillarId: string;

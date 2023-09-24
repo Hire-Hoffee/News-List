@@ -21,7 +21,7 @@ export default function MainPage() {
   const orderBy = useAppSelector((state) => state.newsData.orderBy);
   const [page, setPage] = useState(2);
 
-  const { ref, inView, entry } = useInView({});
+  const { ref, inView, entry } = useInView({ threshold: 1 });
 
   useEffect(() => {
     dispatch(fetchNewsData({}));
@@ -29,6 +29,8 @@ export default function MainPage() {
 
   useEffect(() => {
     if (inView) {
+      console.log("true");
+
       dispatch(fetchNewsData({ page, keyWord, pageSize, orderBy }));
       setPage(page + 1);
     }

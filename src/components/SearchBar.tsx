@@ -1,6 +1,7 @@
 import styles from "@/styles/SearchBar.module.css";
 
 import { useAppDispatch } from "@/store/hooks";
+import { changeKeywordState } from "@/store/newsSlice";
 import { fetchNewsData } from "@/store/newsSlice";
 import React, { useState } from "react";
 
@@ -13,6 +14,7 @@ export default function SearchBar({}: Props) {
   const fetchData = (e: React.MouseEvent) => {
     e.preventDefault();
     dispatch(fetchNewsData({ keyWord: text }));
+    dispatch(changeKeywordState(text));
   };
 
   return (

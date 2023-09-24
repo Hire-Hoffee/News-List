@@ -26,12 +26,25 @@
   padding: 10px;
 }
 
+.detailsContainer span {
+  font-size: 13px;
+}
+
+.detailsContainer p {
+  font-weight: bold;
+}
+
 .detailsContainer button {
   width: 75px;
-  padding: 5px;
+  padding: 7px;
   border-radius: 3px;
   border: none;
   margin-left: auto;
   cursor: pointer;
   background-color: #ddd;
+  font-size: 15px;
+}
+
+.detailsContainer button:hover {
+  opacity: 0.8;
 }

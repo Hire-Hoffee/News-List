@@ -1,9 +1,10 @@
 .mainContainer {
-  background-color: #748796;
+  background-color: #90a7b9;
   padding: 10px;
   margin: 10px;
   border-radius: 10px;
   width: 100%;
+  max-width: 1000px;
 }
 
 .searchInputDiv,
@@ -11,6 +12,7 @@
   padding: 5px;
   display: flex;
   justify-content: center;
+  gap: 10px;
 }
 
 .searchInputDiv input {
@@ -19,16 +21,37 @@
   border: none;
   width: 100%;
   padding: 10px 20px 10px 20px;
+  font-size: 16px;
+}
+
+.searchInputDiv input:focus {
+  outline: none;
 }
 
 .searchInputDiv button {
   border-radius: 5px;
   padding: 10px 30px 10px 30px;
   border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.searchInputDiv button:hover {
+  opacity: 0.8;
 }
 
 .searchOptionsDiv select {
   margin: 5px;
   padding: 5px;
   border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.searchOptionsDiv label {
+  font-size: 14px;
+}
+
+.searchOptionsDiv select:focus {
+  outline: none;
 }

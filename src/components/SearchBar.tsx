@@ -49,23 +49,33 @@ export default function SearchBar({}: Props) {
           <button onClick={fetchData}>Find</button>
         </div>
         <div className={styles.searchOptionsDiv}>
-          <select value={sortBy} onChange={handleSortBy}>
-            <option disabled value="">
-              Sort by
-            </option>
-            <option value="newest">Newest</option>
-            <option value="oldest">Oldest</option>
-            <option value="relevance">Relevance</option>
-          </select>
+          <div>
+            <label htmlFor="sortBy">Sort news by:</label>
+            <select id="sortBy" value={sortBy} onChange={handleSortBy}>
+              <option disabled value="">
+                Sort by
+              </option>
+              <option value="newest">Newest</option>
+              <option value="oldest">Oldest</option>
+              <option value="relevance">Relevance</option>
+            </select>
+          </div>
 
-          <select value={pageSize} onChange={handleChangePageLength}>
-            <option disabled value="">
-              News on page
-            </option>
-            <option value={5}>5</option>
-            <option value={10}>10</option>
-            <option value={20}>20</option>
-          </select>
+          <div>
+            <label htmlFor="pageSize">Max news by page:</label>
+            <select
+              id="pageSize"
+              value={pageSize}
+              onChange={handleChangePageLength}
+            >
+              <option disabled value="">
+                News on page
+              </option>
+              <option value={5}>5</option>
+              <option value={10}>10</option>
+              <option value={20}>20</option>
+            </select>
+          </div>
         </div>
       </form>
     </div>

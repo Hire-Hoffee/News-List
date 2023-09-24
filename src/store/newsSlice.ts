@@ -6,11 +6,14 @@ const initialState: {
 } & Partial<FetchOptionsType> = {
   news: [],
   keyWord: "",
+  pageSize: 10,
+  page: 2,
 };
 
 type FetchOptionsType = {
   keyWord: string;
   page: number;
+  pageSize: number;
 };
 
 export const newsSlice = createSlice({
@@ -19,6 +22,10 @@ export const newsSlice = createSlice({
   reducers: {
     changeKeywordState: (state, action: PayloadAction<string>) => {
       state.keyWord = action.payload;
+    },
+    changePageSizeState: (state, action: PayloadAction<number>) => {
+      state.pageSize = action.payload;
+      state.news.length = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -37,6 +44,7 @@ const fetchNewsData = createAsyncThunk(
   async ({
     keyWord,
     page,
+    pageSize,
   }: Partial<FetchOptionsType>): Promise<AllNewsDataType> => {
     const URL = process.env.NEXT_PUBLIC_API_ENDPOINT!;
     const searchParams = new URLSearchParams({
@@ -44,6 +52,7 @@ const fetchNewsData = createAsyncThunk(
       "show-fields": "thumbnail",
       q: keyWord || "",
       page: page?.toString() || "1",
+      "page-size": pageSize?.toString() || "10",
     });
 
     const response = await fetch(URL + searchParams);
@@ -51,7 +60,7 @@ const fetchNewsData = createAsyncThunk(
   }
 );
 
-export const { changeKeywordState } = newsSlice.actions;
+export const { changeKeywordState, changePageSizeState } = newsSlice.actions;
 export { fetchNewsData };
 
 export default newsSlice.reducer;

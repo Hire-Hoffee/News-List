@@ -1,7 +1,7 @@
 import styles from "@/styles/SearchBar.module.css";
 
 import { useAppDispatch } from "@/store/hooks";
-import { changeKeywordState } from "@/store/newsSlice";
+import { changeKeywordState, changePageSizeState } from "@/store/newsSlice";
 import { fetchNewsData } from "@/store/newsSlice";
 import React, { useState } from "react";
 
@@ -9,11 +9,17 @@ type Props = {};
 
 export default function SearchBar({}: Props) {
   const [text, setText] = useState("");
+  const [pageSize, setPageSize] = useState(10);
   const dispatch = useAppDispatch();
+
+  const handleChangePageLength = (event: any) => {
+    setPageSize(event.currentTarget.value);
+    dispatch(changePageSizeState(event.currentTarget.value));
+  };
 
   const fetchData = (e: React.MouseEvent) => {
     e.preventDefault();
-    dispatch(fetchNewsData({ keyWord: text }));
+    dispatch(fetchNewsData({ keyWord: text, pageSize }));
     dispatch(changeKeywordState(text));
   };
 
@@ -34,9 +40,14 @@ export default function SearchBar({}: Props) {
             <option value="">Sort by</option>
             <option value=""></option>
           </select>
-          <select name="" id="">
-            <option value="">Items on page</option>
-            <option value=""></option>
+
+          <select value={pageSize} onChange={handleChangePageLength}>
+            <option disabled value="">
+              News on page
+            </option>
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={20}>20</option>
           </select>
         </div>
       </form>

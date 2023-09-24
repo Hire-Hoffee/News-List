@@ -17,6 +17,7 @@ export default function MainPage() {
   const dispatch = useAppDispatch();
   const newsData = useAppSelector((state) => state.newsData.news);
   const keyWord = useAppSelector((state) => state.newsData.keyWord);
+  const pageSize = useAppSelector((state) => state.newsData.pageSize);
   const [page, setPage] = useState(2);
 
   const { ref, inView, entry } = useInView({});
@@ -27,7 +28,7 @@ export default function MainPage() {
 
   useEffect(() => {
     if (inView) {
-      dispatch(fetchNewsData({ page, keyWord }));
+      dispatch(fetchNewsData({ page, keyWord, pageSize }));
       setPage(page + 1);
     }
   }, [inView, entry]);

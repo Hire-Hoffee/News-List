@@ -1,7 +1,11 @@
 import styles from "@/styles/SearchBar.module.css";
 
 import { useAppDispatch } from "@/store/hooks";
-import { changeKeywordState, changePageSizeState } from "@/store/newsSlice";
+import {
+  changeKeywordState,
+  changePageSizeState,
+  changeOrderByState,
+} from "@/store/newsSlice";
 import { fetchNewsData } from "@/store/newsSlice";
 import React, { useState } from "react";
 
@@ -10,11 +14,20 @@ type Props = {};
 export default function SearchBar({}: Props) {
   const [text, setText] = useState("");
   const [pageSize, setPageSize] = useState(10);
+  const [sortBy, setSortBy] = useState("newest");
   const dispatch = useAppDispatch();
 
   const handleChangePageLength = (event: any) => {
     setPageSize(event.currentTarget.value);
     dispatch(changePageSizeState(event.currentTarget.value));
+  };
+
+  const handleSortBy = (event: any) => {
+    const value = event.currentTarget.value;
+
+    setSortBy(value);
+    dispatch(changeOrderByState(value));
+    dispatch(fetchNewsData({ keyWord: text, pageSize, orderBy: value }));
   };
 
   const fetchData = (e: React.MouseEvent) => {
@@ -36,9 +49,13 @@ export default function SearchBar({}: Props) {
           <button onClick={fetchData}>Find</button>
         </div>
         <div className={styles.searchOptionsDiv}>
-          <select name="" id="">
-            <option value="">Sort by</option>
-            <option value=""></option>
+          <select value={sortBy} onChange={handleSortBy}>
+            <option disabled value="">
+              Sort by
+            </option>
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+            <option value="relevance">Relevance</option>
           </select>
 
           <select value={pageSize} onChange={handleChangePageLength}>

@@ -50,8 +50,14 @@
   border: none;
   margin-left: auto;
   cursor: pointer;
-  background-color: #ddd;
+  background-color: #ebe6da;
   font-size: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.detailsContainer button span {
+  font-size: 14px;
 }
 
 .detailsContainer button:hover {

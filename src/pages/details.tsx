@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/DetailsPage.module.css";
 
 import parse from "html-react-parser";
+import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,6 +13,7 @@ export default function NewsDetailsPage({
   result,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const data = result.response.content;
+  const router = useRouter();
 
   return (
     <div className={`${inter.className} ${styles.mainContainer}`}>
@@ -40,6 +42,9 @@ export default function NewsDetailsPage({
         </div>
       </header>
       <main className={styles.mainContent}>{parse(data.fields.body)}</main>
+      <footer className={styles.footer}>
+        <button onClick={() => router.push("/")}>Back to main page</button>
+      </footer>
     </div>
   );
 }

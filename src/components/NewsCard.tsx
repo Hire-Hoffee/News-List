@@ -11,7 +11,10 @@ export default function NewsCard({
   const router = useRouter();
 
   return (
-    <div className={styles.mainContainer}>
+    <div
+      className={styles.mainContainer}
+      onClick={() => router.push("/details?id=" + id)}
+    >
       <div className={styles.imageContainer}>
         <img src={fields?.thumbnail} alt="" />
       </div>

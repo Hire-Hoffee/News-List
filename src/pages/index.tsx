@@ -29,8 +29,6 @@ export default function MainPage() {
 
   useEffect(() => {
     if (inView) {
-      console.log("true");
-
       dispatch(fetchNewsData({ page, keyWord, pageSize, orderBy }));
       setPage(page + 1);
     }

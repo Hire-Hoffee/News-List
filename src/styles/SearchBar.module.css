@@ -1,5 +1,5 @@
 .mainContainer {
-  background-color: #90a7b9;
+  background-color: #0d7cad;
   padding: 10px;
   margin: 10px;
   border-radius: 10px;
@@ -54,6 +54,10 @@
   font-size: 16px;
   cursor: pointer;
   border: none;
+}
+
+.searchOptionsDiv label {
+  color: #fff;
 }
 
 .searchOptionsDiv label {

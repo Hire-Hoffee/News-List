@@ -1,5 +1,5 @@
 .mainContainer {
-  background-color: #f3f3f3;
+  background-color: #fff;
   margin: 10px;
   padding: 20px;
   border-radius: 10px;
@@ -109,6 +109,12 @@
   font-style: italic;
 }
 
+.mainContent blockquote {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #a8d8f2;
+}
+
 .mainContent img {
   width: 100%;
   max-width: 600px;
@@ -132,7 +138,7 @@
   font-size: 16px;
   border: none;
   border-radius: 5px;
-  background-color: #ddd;
+  background-color: #a8d8f2;
   cursor: pointer;
 }
 

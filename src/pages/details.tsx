@@ -37,9 +37,7 @@ export default function NewsDetailsPage({
             <i>Words: {data.fields.wordcount}</i>
           </div>
         </div>
-        <div className={styles.imageContainer}>
-          <img src={data.fields.thumbnail} alt="" />
-        </div>
+        <div className={styles.imageContainer}>{parse(data.fields.main)}</div>
       </header>
       <main className={styles.mainContent}>{parse(data.fields.body)}</main>
       <footer className={styles.footer}>
@@ -54,7 +52,7 @@ export const getServerSideProps = (async ({ query }) => {
   const searchParams = new URLSearchParams({
     "api-key": "a16af744-449d-4a89-86de-2a2118d3a7a0",
     "show-fields":
-      "body,thumbnail,headline,wordcount,firstPublicationDate,lastModified,shortUrl",
+      "main,body,thumbnail,headline,wordcount,firstPublicationDate,lastModified,shortUrl",
   });
 
   const response = await fetch(URL + searchParams);

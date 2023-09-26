@@ -5,6 +5,9 @@
   border-radius: 10px;
   width: 100%;
   max-width: 1000px;
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.3);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.3);
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.3);
 }
 
 .searchInputDiv,

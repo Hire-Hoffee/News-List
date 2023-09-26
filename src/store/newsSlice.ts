@@ -3,12 +3,13 @@ import { AllNewsDataType, OneNewsDataType } from "@/types/newsTypes";
 
 const initialState: {
   news: Partial<OneNewsDataType[]>;
-} & Partial<FetchOptionsType> = {
+} & Partial<FetchOptionsType> & { isLoadingData: boolean } = {
   news: [],
   keyWord: "",
   pageSize: 10,
   page: 2,
   orderBy: "newest",
+  isLoadingData: false,
 };
 
 type FetchOptionsType = {
@@ -34,12 +35,20 @@ export const newsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(fetchNewsData.pending, (state, action) => {
+      if (action.meta.arg.page) {
+        return;
+      }
+      state.isLoadingData = true;
+    });
+
     builder.addCase(fetchNewsData.fulfilled, (state, action) => {
       if (action.meta.arg.page) {
         state.news = [...state.news, ...action.payload.response.results];
         return;
       }
       state.news = action.payload.response.results;
+      state.isLoadingData = false;
     });
   },
 });

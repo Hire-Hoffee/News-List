@@ -10,6 +10,7 @@ const initialState: {
   page: 2,
   orderBy: "newest",
   isLoadingData: false,
+  lang: "en",
 };
 
 type FetchOptionsType = {
@@ -17,6 +18,7 @@ type FetchOptionsType = {
   page: number;
   pageSize: number;
   orderBy: string;
+  lang: string;
 };
 
 export const newsSlice = createSlice({
@@ -32,6 +34,9 @@ export const newsSlice = createSlice({
     },
     changeOrderByState: (state, action: PayloadAction<string>) => {
       state.orderBy = action.payload;
+    },
+    changeLangState: (state, action: PayloadAction<string>) => {
+      state.lang = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -60,6 +65,7 @@ const fetchNewsData = createAsyncThunk(
     page,
     pageSize,
     orderBy,
+    lang,
   }: Partial<FetchOptionsType>): Promise<AllNewsDataType> => {
     const URL = process.env.NEXT_PUBLIC_API_ENDPOINT!;
     const searchParams = new URLSearchParams({
@@ -69,6 +75,7 @@ const fetchNewsData = createAsyncThunk(
       page: page?.toString() || "1",
       "page-size": pageSize?.toString() || "10",
       "order-by": orderBy || "newest",
+      lang: lang || "en",
     });
 
     const response = await fetch(URL + searchParams);
@@ -76,7 +83,7 @@ const fetchNewsData = createAsyncThunk(
   }
 );
 
-export const { changeKeywordState, changePageSizeState, changeOrderByState } =
+export const { changeKeywordState, changePageSizeState, changeOrderByState, changeLangState } =
   newsSlice.actions;
 export { fetchNewsData };
 

@@ -20,6 +20,7 @@ export default function MainPage() {
   const pageSize = useAppSelector((state) => state.newsData.pageSize);
   const orderBy = useAppSelector((state) => state.newsData.orderBy);
   const isLoadingData = useAppSelector((state) => state.newsData.isLoadingData);
+  const lang = useAppSelector((state) => state.newsData.lang);
   const [page, setPage] = useState(2);
 
   const { ref, inView, entry } = useInView({ threshold: 1 });
@@ -30,7 +31,7 @@ export default function MainPage() {
 
   useEffect(() => {
     if (inView) {
-      dispatch(fetchNewsData({ page, keyWord, pageSize, orderBy }));
+      dispatch(fetchNewsData({ page, keyWord, pageSize, orderBy, lang }));
       setPage(page + 1);
     }
   }, [inView, entry]);

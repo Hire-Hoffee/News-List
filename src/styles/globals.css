@@ -5,17 +5,18 @@
 }
 
 body {
-  background-color: #eee;
+  background-color: #16171d;
+  color: #fff;
 }
 
 a {
-  color: #0d7cad;
+  color: #a7addb;
 }
 
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #397524 #dfe9eb;
+  scrollbar-color: #333543 #dfe9eb;
 }
 
 /* Chrome, Edge and Safari */
@@ -30,9 +31,9 @@ a {
 
 *::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  background-color: #515742;
+  background-color: #333543;
 }
 *::-webkit-scrollbar-thumb:hover {
   border-radius: 5px;
-  background-color: #84867b;
+  background-color: #505369;
 }

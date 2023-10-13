@@ -1,7 +1,7 @@
 .mainContainer {
   width: 300px;
   height: 350px;
-  background-color: #a8d8f2;
+  background-color: #333543;
   border-radius: 10px;
   overflow: hidden;
   font-size: 14px;
@@ -11,9 +11,9 @@
 }
 
 .mainContainer:hover {
-  -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  -webkit-box-shadow: 4px 4px 5px -2px rgba(167, 173, 219, 0.2);
+  -moz-box-shadow: 4px 4px 5px -2px rgba(167, 173, 219, 0.2);
+  box-shadow: 4px 4px 5px -2px rgba(167, 173, 219, 0.2);
   transition: 0.2s;
 }
 
@@ -44,16 +44,27 @@
 }
 
 .detailsContainer button {
+  position: relative;
   width: 75px;
-  padding: 7px;
+  padding: 10px;
   border-radius: 10px;
   border: none;
   margin-left: auto;
   cursor: pointer;
-  background-color: #fff;
+  background-color: #505369;
+  font-weight: bold;
+  color: #fff;
   font-size: 15px;
   display: flex;
   align-items: center;
+}
+
+.detailsContainer button svg {
+  fill: #fff;
+  position: absolute;
+  top: 6px;
+  right: 0;
+  bottom: 0;
 }
 
 .detailsContainer button span {

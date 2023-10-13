@@ -23,6 +23,7 @@
   height: 100%;
   max-width: 50px;
   max-height: 50px;
+  fill: #a7addb;
 
   animation-name: spin;
   animation-duration: 1500ms;

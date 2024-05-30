@@ -1,68 +1,52 @@
-# Приложение для чтения новостей
+# Newsreader App
 
-### Техническое задание
+Simple two-page SPA application for news browsing using Guardian API.
 
-Необходимо реализовать 2-х страничное новостное SPA приложение, в качестве бэкенда
-использовать Guardian API (для получения API ключа требуется регистрация).
-Приложение состоит из главной страницы, отображающей карточки новостей, при клике на
-какую-либо карточку должна открываться соответствующая страница новости.
-В качестве технического стека использовать: Next.js, Typescript, Redux Toolkit, CSS Modules.
-Дополнительно можно использовать любые JS библиотеки, которые помогут решить
-поставленную задачу.
-Требования к верстке: адаптивная (до 320px), кроссбраузерная
+#### [Link to technical assignment](./Тестовое%20задание.pdf)
 
-Главная страница:
+**Functionality:**
 
-- Необходимо реализовать функционал поиска новостей по ключевому слову
-- Реализовать сортировку результатов поисковой выдачи по релевантности и по дате
-  новости
-- Реализовать настройку количества отображаемых новостей на 1 странице
-- При скролле к последней новости на странице реализовать подгрузку новостей со
-  следующей страницы
-- Весь стейт на этой страницы должен храниться в redux, данные с бэкенда
-  запрашивать через redux async thunk
-- Использовать соответствующий эндпойнт для поиска новостей - ссылка на
-  документацию
+- **Main page:**
 
-Пример реализации главной страницы:
+  - Display news cards.
+  - Search for news by keyword.
+  - Sort news by relevance and date.
+  - Customize the number of displayed news items on the page.
+  - Infinite scrolling (loading news when reaching the end of the page).
+  - Storing the page state in Redux.
+  - Loading data from backend via Redux async thunk.
 
-<div>
-  <img src="https://i.imgur.com/9D7moGb.png"/>
-</div>
-<br>
+![Main page](https://i.imgur.com/Euyd2hE.png "Main page")
 
-Страница новости:
+- **News page:**
+  - Display full news text with correct formatting (headings, paragraphs, lists, quotes, images).
+  - Display news date, illustration (if available), link to original article and back button.
+  - Server Side Rendering.
 
-- Данная страница должна отображать текст новости
-- Параграфы, заголовки, списки, имеющиеся в тексте новости, должны иметь
-  соответствующие стили для правильного отображения их на странице (отступы
-  между элементами, жирное начертание шрифта для заголовков, реализовать стили
-  для цитат, картинок и других элементов, встречающихся в тексте новости)
-- Также данная страница должна содержать дату новости, картинку иллюстрирующую
-  эту новость (получить с бэкенда), ссылку на оригинальную статью на сайте Guardian,
-  кнопку для перехода назад на главную страницу
-- Данные на этой странице необходимо запрашивать на стороне сервера, для
-  страницы должен быть реализован Server Side Rendering
-- Использовать соответствующий эндпойнт для запроса данных о новости - ссылка на
-  документацию
+![News page](https://i.imgur.com/SlnXANs.png "News page")
 
-Пример реализации страницы новости:
+**Technologies:**
 
-<div>
-  <img src="https://i.imgur.com/qWnsprR.png"/>
-</div>
-<br>
+- **Frontend:**
+  Next.js, TypeScript, Redux Toolkit, CSS Modules
 
-В качестве результата работы необходимо прислать ссылку на публичный репозиторий на
-Github, содержащий исходный код приложения, историю коммитов. Для разработки
-приложения ответвиться от ветки main на ветку dev, по окончанию разработки сделать
-merge ветки dev в ветку main.
+- **Backend:**
+  Guardian API: REST API for news content.
 
-### Запуск
+**Layout Requirements:**
 
-- git clone `https://github.com/Hire-Hoffee/News-List.git`
-- npm install
-- Создать `.env.local` файл со следующими параметрами
-  1.  `NEXT_PUBLIC_API_ENDPOINT` = `https://content.guardianapis.com/search?`
-  2.  `NEXT_PUBLIC_API_KEY` = `при регистрации на guardianapis`
-- npm run dev
+- Adaptive layout (up to 320px).
+
+**How it works:**
+
+1.  **Main page:**
+
+    - When the page loads, the app makes a request to the Guardian API using the search, sort, news count and page number parameters stored in the Redux store.
+    - The resulting data is stored in the Redux store and displayed as news cards.
+    - Scrolling down the page triggers a handler that makes a request for the next chunk of data, if available.
+    - The user can interact with UI elements (search, sorting, number of news items) by changing the state of the Redux store, which causes the component to re-render and update the data.
+
+2.  **News page:**
+    - When navigating to the news page, Next.js pre-requests server-side news data using the news id from the URL.
+    - The resulting data is used to render the page on the server, making it load faster and improving SEO.
+    - The page displays the full text of the news, formatted with HTML tags and CSS styles.
